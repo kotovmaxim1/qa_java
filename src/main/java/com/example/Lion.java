@@ -15,8 +15,15 @@ public class Lion {
             throw new Exception("Используйте допустимые значения пола животного - самей или самка");
         }
     }
+    //Реализация до использования принципа инъекции зависимостей
+    //Feline feline = new Feline();
 
-    Feline feline = new Feline();
+    private Feline feline;
+
+    //DI через конструктор
+    public Lion(Feline feline){
+        this.feline = feline;
+    }
 
     public int getKittens() {
         return feline.getKittens();
