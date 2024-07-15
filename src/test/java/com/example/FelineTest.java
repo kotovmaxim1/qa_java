@@ -1,5 +1,6 @@
 package com.example;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -16,7 +17,8 @@ public class FelineTest {
 
     @Test
     public void testGetFamily(){
-
+        feline.getFamily();
+        Mockito.verify(feline, Mockito.times(1)).getFamily();
         assertEquals("Кошачьи", feline.getFamily());
     }
 
@@ -26,13 +28,15 @@ public class FelineTest {
         Mockito.verify(feline).getFood("Хищник");
     }
 
-    @Test
-    public void testGetKittens(){
+    @Test public void testGetKittensWithParam(){
         int expectedKittens = 7;
         Mockito.when(feline.getKittens(Mockito.anyInt())).thenReturn(expectedKittens);
+        assertEquals(expectedKittens, feline.getKittens());
+    }
 
-        int actualKittens = feline.getKittens();
+    @Test
+    public void testGetKittensWithoutParam(){
+        feline.getKittens();
         Mockito.verify(feline).getKittens(1);
-        assertEquals(expectedKittens,actualKittens);
     }
 }

@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class LionParamTest {
 
     private final String sex;
-    private boolean expected;
+    private final boolean expected;
     Feline feline;
 
     public LionParamTest(String sex, boolean expected){
@@ -36,7 +36,7 @@ public class LionParamTest {
 
     @Test
     public void testDoesHasMane() throws Exception {
-        Lion lion = new Lion(sex);
+        Lion lion = new Lion(sex, feline);
         assertEquals(expected, lion.doesHaveMane());
     }
 }
